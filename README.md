@@ -1,7 +1,7 @@
-My App
+Companies House
 ===
 
-TODO: Include a summary of app functionality and a screenshot
+Search companies
 
 Basic Usage
 ---
