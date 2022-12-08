@@ -1,7 +1,7 @@
 Companies House
 ===
 
-Search companies
+Search companies in Companies House
 
 Basic Usage
 ---
