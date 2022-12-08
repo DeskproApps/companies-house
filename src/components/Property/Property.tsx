@@ -12,7 +12,7 @@ export const Property: FC<PropertyProps> = ({ title, children, width }: Property
 
     return (
         <Stack vertical style={{ width: width ?? "auto" }}>
-            {title && <div style={{ color: theme.colors.grey80, marginBottom: "2px" }}>{title}</div>}
+            {title && <div style={{ color: theme.colors.grey80, fontSize: ".8rem", marginBottom: "2px" }}>{title}</div>}
             <div style={{ fontSize: "12px" }}>{children}</div>
         </Stack>
     );
