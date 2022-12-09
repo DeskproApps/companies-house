@@ -11,7 +11,7 @@ export interface Links {
 }
 
 export interface Matches {
-    snippet: any[];
+    snippet: string[];
     title: number[];
 }
 
