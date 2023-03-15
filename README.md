@@ -1,35 +1,7 @@
-Companies House
-===
+<img align="right" alt="Deskpro" src="https://raw.githubusercontent.com/DeskproApps/companies-house/master/docs/assets/deskpro-logo.svg" />
 
-Search companies in Companies House
+# Companies House App
 
-Basic Usage
----
+Search for companies in Companies House
 
-We recommend using [Yarn](https://yarnpkg.com/) to manage this project. First, start by installing the project 
-dependencies from inside the project directory `app-template-vite`.
-
-```bash
-yarn install
-```
-
-Then, run the development server.
-
-```bash
-yarn start
-```
-
-You should now be able to view the bare-bones app in your browser.
-
-For more information or to start developing an app, please take a look at our [developer guides](https://support.deskpro.com/en/guides/developers/apps/apps-1/anatomy-of-an-app).
-
-Testing
----
-
-We've included `jest` to run your tests. It will look anywhere in `/src` for test suite files ending in `.test.tsx`.
-
-You can run all tests using:
-
-```bash
-yarn test
-```
+![Companies House App - Deskpro](https://raw.githubusercontent.com/DeskproApps/companies-house/master/docs/assets/companies-house_screenshot_01.png)
