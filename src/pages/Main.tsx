@@ -55,7 +55,7 @@ export const Main = () => {
 
     useEffect(() => {
         search(searchQuery);
-    }, [searchQuery]);
+    }, [searchQuery, search]);
 
     function clear() {
         setSearchQuery('');
