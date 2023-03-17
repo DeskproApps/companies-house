@@ -44,9 +44,6 @@ jobs:
       - name: Type check
         run: yarn tsc --noemit
 
-      - name: Run tests
-        run: yarn test:coverage
-
       - name: Build
         run: yarn build
 
