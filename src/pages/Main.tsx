@@ -9,6 +9,7 @@ import {
   useInitialisedDeskproAppClient,
 } from "@deskpro/app-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useErrorBoundary } from "react-error-boundary";
 import {
   faSearch,
   faTimes,
@@ -24,7 +25,10 @@ export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
 
-  const searchInputRef = useRef<HTMLInputElement>(null);
+  const { showBoundary } = useErrorBoundary();
+
+  const searchInputRef = useRef(null);
+
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchLoading, setSearchLoading] = useState<boolean>(false);
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -59,6 +63,12 @@ export const Main = () => {
         }
       );
 
+      if (!res.ok) {
+        showBoundary((await res.json()).error);
+
+        return;
+      }
+
       setCompanies((await res.json())?.items ?? []);
       setSearchLoading(false);
     })();
@@ -73,6 +83,8 @@ export const Main = () => {
     setSearchQuery("");
     setSearchLoading(false);
     setCompanies([]);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore focus does exist, its an input ref
     searchInputRef.current?.focus();
   }
 
