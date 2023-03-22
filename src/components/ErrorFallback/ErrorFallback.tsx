@@ -8,7 +8,6 @@ export const ErrorFallback = ({
   error: string;
   resetErrorBoundary: () => void;
 }) => {
-  console.log(error);
   return (
     <Stack vertical gap={10} role="alert">
       <H1>Something went wrong:</H1>
