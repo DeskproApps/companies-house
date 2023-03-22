@@ -10,7 +10,6 @@ import {
 } from "@deskpro/app-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useErrorBoundary } from "react-error-boundary";
-
 import {
   faSearch,
   faTimes,
@@ -25,9 +24,11 @@ import { SideColumns } from "../components/SideColumns/SideColumns";
 export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
+  
   const { showBoundary } = useErrorBoundary();
 
   const searchInputRef = useRef(null);
+
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchLoading, setSearchLoading] = useState<boolean>(false);
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -82,6 +83,7 @@ export const Main = () => {
     setSearchQuery("");
     setSearchLoading(false);
     setCompanies([]);
+    searchInputRef.current?.focus();
   }
 
   return (
