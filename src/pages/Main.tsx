@@ -24,7 +24,7 @@ import { SideColumns } from "../components/SideColumns/SideColumns";
 export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
-  
+
   const { showBoundary } = useErrorBoundary();
 
   const searchInputRef = useRef(null);
@@ -83,6 +83,8 @@ export const Main = () => {
     setSearchQuery("");
     setSearchLoading(false);
     setCompanies([]);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore focus does exist, its an input ref
     searchInputRef.current?.focus();
   }
 
