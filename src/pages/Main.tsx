@@ -7,6 +7,7 @@ import {
   HorizontalDivider,
   useDeskproAppTheme,
   useInitialisedDeskproAppClient,
+  AnyIcon,
 } from "@deskpro/app-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useErrorBoundary } from "react-error-boundary";
@@ -97,9 +98,12 @@ export const Main = () => {
           setSearchQuery(e.target.value)
         }
         leftIcon={
-          searchLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : faSearch
+          searchLoading ? <FontAwesomeIcon icon={faSpinner as unknown as {
+            prefix: "fas";
+            iconName: "mailchimp";
+          }} spin /> : faSearch as AnyIcon
         }
-        rightIcon={<IconButton icon={faTimes} onClick={clear} minimal />}
+        rightIcon={<IconButton icon={faTimes as AnyIcon} onClick={clear} minimal />}
         placeholder="Search companies house&hellip;"
       />
       {companies.map((company, idx) => (
@@ -126,7 +130,10 @@ export const Main = () => {
                   {company.title}
                 </strong>
                 <FontAwesomeIcon
-                  icon={faExternalLink}
+                  icon={faExternalLink  as unknown as {
+                    prefix: "fas";
+                    iconName: "mailchimp";
+                  }}
                   color={theme.colors.cyan100}
                 />
               </Stack>
