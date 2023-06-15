@@ -2,10 +2,11 @@
   "name": "@deskpro-apps/companies-house",
   "title": "Companies House",
   "description": "Search for companies in Companies House",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
+  "serveUrl": "https://apps-cdn.deskpro-service.com/__name__/__version__",
   "targets": [{ "target": "global", "entrypoint": "index.html" }],
   "settings": {
     "api_key": {
