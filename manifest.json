@@ -2,28 +2,29 @@
   "name": "@deskpro-apps/companies-house",
   "title": "Companies House",
   "description": "Search for companies in Companies House",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
-  "targets": [{
-    "target": "global",
-    "entrypoint": "index.html"
-  }],
+  "serveUrl": "https://apps-cdn.deskpro-service.com/__name__/__version__",
+  "targets": [{ "target": "global", "entrypoint": "index.html" }],
   "settings": {
     "api_key": {
       "title": "API Key",
       "description": "Your companies house API key",
       "type": "string",
+      "options": { "entrypoint": "#/admin" },
       "isRequired": true,
       "isBackendOnly": true
     }
   },
   "proxy": {
-    "whitelist": [{
-      "url": "https://api.company-information.service.gov.uk/.*",
-      "methods": ["GET"],
-      "timeout": 30
-    }]
+    "whitelist": [
+      {
+        "url": "https://api.company-information.service.gov.uk/.*",
+        "methods": ["GET"],
+        "timeout": 30
+      }
+    ]
   }
 }

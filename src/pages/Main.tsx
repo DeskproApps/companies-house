@@ -7,8 +7,10 @@ import {
   HorizontalDivider,
   useDeskproAppTheme,
   useInitialisedDeskproAppClient,
+  AnyIcon,
 } from "@deskpro/app-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useErrorBoundary } from "react-error-boundary";
 import {
   faSearch,
   faTimes,
@@ -24,7 +26,10 @@ export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
 
+  const { showBoundary } = useErrorBoundary();
+
   const searchInputRef = useRef(null);
+
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [searchLoading, setSearchLoading] = useState<boolean>(false);
   const [companies, setCompanies] = useState<Company[]>([]);
@@ -59,6 +64,12 @@ export const Main = () => {
         }
       );
 
+      if (!res.ok) {
+        showBoundary((await res.json()).error);
+
+        return;
+      }
+
       setCompanies((await res.json())?.items ?? []);
       setSearchLoading(false);
     })();
@@ -73,6 +84,9 @@ export const Main = () => {
     setSearchQuery("");
     setSearchLoading(false);
     setCompanies([]);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore focus does exist, its an input ref
+    searchInputRef.current?.focus();
   }
 
   return (
@@ -84,9 +98,12 @@ export const Main = () => {
           setSearchQuery(e.target.value)
         }
         leftIcon={
-          searchLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : faSearch
+          searchLoading ? <FontAwesomeIcon icon={faSpinner as unknown as {
+            prefix: "fas";
+            iconName: "mailchimp";
+          }} spin /> : faSearch as AnyIcon
         }
-        rightIcon={<IconButton icon={faTimes} onClick={clear} minimal />}
+        rightIcon={<IconButton icon={faTimes as AnyIcon} onClick={clear} minimal />}
         placeholder="Search companies house&hellip;"
       />
       {companies.map((company, idx) => (
@@ -113,7 +130,10 @@ export const Main = () => {
                   {company.title}
                 </strong>
                 <FontAwesomeIcon
-                  icon={faExternalLink}
+                  icon={faExternalLink  as unknown as {
+                    prefix: "fas";
+                    iconName: "mailchimp";
+                  }}
                   color={theme.colors.cyan100}
                 />
               </Stack>
