@@ -39,6 +39,7 @@
     "@types/testing-library__jest-dom": "^5.14.2",
     "@typescript-eslint/eslint-plugin": "5.6.0",
     "@typescript-eslint/parser": "5.6.0",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.139",
     "@vitejs/plugin-react": "^1.0.7",
     "adm-zip": "^0.5.9",
     "cross-env": "7.0.3",
@@ -53,6 +54,6 @@
     "styled-components": "^5.3.5",
     "ts-jest": "^27.1.2",
     "typescript": "^4.4.4",
-    "vite": "^2.7.2"
+    "vite": "^2.9.17"
   }
 }
