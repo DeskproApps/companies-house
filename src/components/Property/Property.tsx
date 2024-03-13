@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from "react";
-import { useDeskproAppTheme, Stack } from "@deskpro/app-sdk";
+import { Stack } from "@deskpro/deskpro-ui";
+import { useDeskproAppTheme } from "@deskpro/app-sdk";
 
 export interface PropertyProps {
   children: JSX.Element | ReactNode;

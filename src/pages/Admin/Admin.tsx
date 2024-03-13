@@ -1,4 +1,5 @@
-import { Input, useDeskproAppClient } from "@deskpro/app-sdk";
+import { Input } from "@deskpro/deskpro-ui";
+import { useDeskproAppClient } from "@deskpro/app-sdk";
 
 export const Admin = () => {
   const { client } = useDeskproAppClient();

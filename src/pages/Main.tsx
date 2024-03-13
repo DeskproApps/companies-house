@@ -1,13 +1,10 @@
+import { Input, Stack, IconButton, AnyIcon } from "@deskpro/deskpro-ui";
 import {
-  Input,
-  Stack,
-  IconButton,
   proxyFetch,
   useDeskproAppClient,
   HorizontalDivider,
   useDeskproAppTheme,
   useInitialisedDeskproAppClient,
-  AnyIcon,
 } from "@deskpro/app-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useErrorBoundary } from "react-error-boundary";
@@ -103,7 +100,7 @@ export const Main = () => {
             iconName: "mailchimp";
           }} spin /> : faSearch as AnyIcon
         }
-        rightIcon={<IconButton icon={faTimes as AnyIcon} onClick={clear} minimal />}
+        rightIcon={<IconButton icon={faTimes as never} onClick={clear} minimal />}
         placeholder="Search companies house&hellip;"
       />
       {companies.map((company, idx) => (
