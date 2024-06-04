@@ -14,13 +14,12 @@
     "bumpManifestVer": "node ./bin/bumpManifestVer.js"
   },
   "dependencies": {
-    "@deskpro/app-sdk": "2.1.12",
+    "@deskpro/app-sdk": "2.1.14",
     "@deskpro/deskpro-ui": "^6.7.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@heroicons/react": "1.0.6",
     "flatpickr": "^4.6.13",
-    "iframe-resizer": "^4.3.11",
     "polished": "^4.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
