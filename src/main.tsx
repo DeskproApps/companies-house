@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import "./main.css";
 import App from "./App";
 import "simplebar/dist/simplebar.min.css";
 import { Scrollbar } from "@deskpro/deskpro-ui";
