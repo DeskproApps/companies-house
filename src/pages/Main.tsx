@@ -87,7 +87,7 @@ export const Main = () => {
   }
 
   return (
-    <Stack gap={10} vertical style={{ width: "100%" }}>
+    <Stack gap={10} vertical style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}>
       <Input
         ref={searchInputRef}
         value={searchQuery}
