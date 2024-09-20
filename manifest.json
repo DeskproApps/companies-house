@@ -2,7 +2,7 @@
   "name": "@deskpro-apps/companies-house",
   "title": "Companies House",
   "description": "Search for companies in Companies House",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "scope": "agent",
   "isSingleInstall": false,
   "hasDevMode": true,
