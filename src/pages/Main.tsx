@@ -61,7 +61,7 @@ export const Main = () => {
         }
       );
 
-      if (!res.ok) {
+      if (!res.status.toString().startsWith("2")) {
         showBoundary((await res.json()).error);
 
         return;
