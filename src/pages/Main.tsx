@@ -5,6 +5,7 @@ import {
   HorizontalDivider,
   useDeskproAppTheme,
   useInitialisedDeskproAppClient,
+  useDeskproLatestAppContext,
 } from "@deskpro/app-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useErrorBoundary } from "react-error-boundary";
@@ -22,6 +23,7 @@ import { SideColumns } from "../components/SideColumns/SideColumns";
 export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
+  const { context } = useDeskproLatestAppContext();
 
   const { showBoundary } = useErrorBoundary();
 
@@ -41,7 +43,7 @@ export const Main = () => {
   });
 
   const search = useDebouncedCallback<(q: string) => void>((q) => {
-    if (!(client && q)) {
+    if (!client || !q || !context?.settings) {
       return;
     }
 
@@ -55,9 +57,14 @@ export const Main = () => {
           q
         )}`,
         {
-          headers: {
-            Authorization: "Basic __api_key.base64__",
-          },
+          headers: context?.settings.use_deskpro_saas
+            ? {
+              "X-Proxy-Global-Proxy-Service": "true",
+              Authorization: "__AUTH__",
+            }
+            : {
+              Authorization: "Basic __api_key.base64__",
+            },
         }
       );
 
@@ -127,7 +134,7 @@ export const Main = () => {
                   {company.title}
                 </strong>
                 <FontAwesomeIcon
-                  icon={faExternalLink  as unknown as {
+                  icon={faExternalLink as unknown as {
                     prefix: "fas";
                     iconName: "mailchimp";
                   }}
@@ -162,7 +169,7 @@ export const Main = () => {
                   value: !company.company_status
                     ? "-"
                     : company.company_status?.charAt(0).toUpperCase() +
-                      company.company_status?.slice(1),
+                    company.company_status?.slice(1),
                 },
               ]}
             ></SideColumns>
