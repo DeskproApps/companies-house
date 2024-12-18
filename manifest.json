@@ -9,13 +9,21 @@
   "serveUrl": "https://apps-cdn.deskpro-service.com/__name__/__version__",
   "appStoreUrl": "https://www.deskpro.com/product-embed/apps/companies-house",
   "targets": [{ "target": "global", "entrypoint": "index.html" }],
+  "secrets": "YPItGN5a8hyNLbvSGznzFjK8tG8Jj7Zzid3qpqwmdir5Ta8dRFXSUXdwWBeXt/lNF1aCdc4Vu7SjYUqMJBxGQ1chIZACyxam5WbDtHIRD4G4ffe6tdIR8zqaXnX2h1uxhKeKgxop2Vrwc8b07IKd2UaG+X4EsVy+7SBAioylQSkOIzoP0fbbQStyHFQjL8JzsKw0SAbwGy0LoUwf1Su9SKP3totKg2jDjT4a2mGZI1AToVqdjh2d+Edx2Dr6OQSX6AiXFfXjO+o7N4EB5XbvecgCaeWpfyxNHfe4lEii0iWxbygQ0pv47PnQImwYtfFdcGoHfKooXyqJUAWE4UoG6i37Saj6DNsOXPHTXQi34Bz1ZFtdGLqgs8w4HMCJyS1eWrcYxNWOx6Az8TghJjXIEZ4m1QfBuWivsXXxFypyiUpJuBJoxzmPIZMurz3qRGfFg/RUaMGPpdtBdy8czuW7fnYT5meRUMxOlo/O4M/tYcb10PlK6xVmqw2KBAYyZKsUBKWIDOf+wJiOHXEfMjcx9QdO38HBiYlrfWI1RByQYzKHyDHiJ/sDFBOEHZavg+YWjCMUQGyOiEb2reimStdHOba9jZbqgKpeTl4n8PAko9KHTBPGCwTSDqURz110thnopgxyCW4Javwb/qUO4fMdKCNL+uFPFGmfWXT3ADlq23w=",
   "settings": {
+    "use_deskpro_saas": {
+      "title": "Use Deskpro SaaS",
+      "description": "Use Deskpros API Keys",
+      "type": "boolean",
+      "default": true,
+      "isRequired": true,
+      "isBackendOnly": false
+    },
     "api_key": {
       "title": "API Key",
       "description": "Your companies house API key",
       "type": "string",
-      "options": { "entrypoint": "#/admin" },
-      "isRequired": true,
+      "isRequired": false,
       "isBackendOnly": true
     }
   },
