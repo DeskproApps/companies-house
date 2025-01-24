@@ -23,7 +23,7 @@ import { SideColumns } from "../components/SideColumns/SideColumns";
 export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext();
+  const { context } = useDeskproLatestAppContext<unknown, {use_deskpro_saas?: boolean}>();
 
   const { showBoundary } = useErrorBoundary();
 
