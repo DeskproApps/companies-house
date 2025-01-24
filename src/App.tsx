@@ -11,7 +11,6 @@ import "simplebar/dist/simplebar.min.css";
 import "@deskpro/deskpro-ui/dist/deskpro-ui.css";
 import "@deskpro/deskpro-ui/dist/deskpro-custom-icons.css";
 import { ErrorFallback } from "./components/ErrorFallback/ErrorFallback";
-import { Admin } from "./pages/Admin/Admin";
 
 function App() {
   return (
@@ -22,7 +21,6 @@ function App() {
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <Routes>
             <Route path="/" index element={<Main />} />
-            <Route path="/admin" element={<Admin />} />
           </Routes>
         </ErrorBoundary>
       </DeskproAppProvider>
