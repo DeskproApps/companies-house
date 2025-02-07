@@ -24,7 +24,8 @@
       "description": "Your companies house API key",
       "type": "string",
       "isRequired": false,
-      "isBackendOnly": true
+      "isBackendOnly": true,
+      "condition": "settings.use_deskpro_sass != true"
     }
   },
   "proxy": {
