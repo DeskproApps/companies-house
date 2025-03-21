@@ -26,7 +26,7 @@
       "type": "string",
       "isRequired": false,
       "isBackendOnly": true,
-      "condition": "settings.use_advanced_connect != true",
+      "condition": "settings.use_advanced_connect != false",
       "order": 10
     }
   },
