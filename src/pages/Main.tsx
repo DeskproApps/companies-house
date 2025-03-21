@@ -23,7 +23,7 @@ import { SideColumns } from "../components/SideColumns/SideColumns";
 export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext<unknown, {use_deskpro_saas?: boolean}>();
+  const { context } = useDeskproLatestAppContext<unknown, {use_advanced_connect?: boolean}>();
 
   const { showBoundary } = useErrorBoundary();
 
@@ -57,13 +57,13 @@ export const Main = () => {
           q
         )}`,
         {
-          headers: context?.settings.use_deskpro_saas
+          headers: context?.settings.use_advanced_connect !== false
             ? {
-              "X-Proxy-Global-Proxy-Service": "true",
-              Authorization: "__AUTH__",
+              Authorization: "Basic __api_key.base64__",
             }
             : {
-              Authorization: "Basic __api_key.base64__",
+              "X-Proxy-Global-Proxy-Service": "true",
+              Authorization: "__AUTH__",
             },
         }
       );
