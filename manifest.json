@@ -9,15 +9,16 @@
   "serveUrl": "https://apps-cdn.deskpro-service.com/__name__/__version__",
   "appStoreUrl": "https://www.deskpro.com/product-embed/apps/companies-house",
   "targets": [{ "target": "global", "entrypoint": "index.html" }],
-  "secrets": "YPItGN5a8hyNLbvSGznzFjK8tG8Jj7Zzid3qpqwmdir5Ta8dRFXSUXdwWBeXt/lNF1aCdc4Vu7SjYUqMJBxGQ1chIZACyxam5WbDtHIRD4G4ffe6tdIR8zqaXnX2h1uxhKeKgxop2Vrwc8b07IKd2UaG+X4EsVy+7SBAioylQSkOIzoP0fbbQStyHFQjL8JzsKw0SAbwGy0LoUwf1Su9SKP3totKg2jDjT4a2mGZI1AToVqdjh2d+Edx2Dr6OQSX6AiXFfXjO+o7N4EB5XbvecgCaeWpfyxNHfe4lEii0iWxbygQ0pv47PnQImwYtfFdcGoHfKooXyqJUAWE4UoG6i37Saj6DNsOXPHTXQi34Bz1ZFtdGLqgs8w4HMCJyS1eWrcYxNWOx6Az8TghJjXIEZ4m1QfBuWivsXXxFypyiUpJuBJoxzmPIZMurz3qRGfFg/RUaMGPpdtBdy8czuW7fnYT5meRUMxOlo/O4M/tYcb10PlK6xVmqw2KBAYyZKsUBKWIDOf+wJiOHXEfMjcx9QdO38HBiYlrfWI1RByQYzKHyDHiJ/sDFBOEHZavg+YWjCMUQGyOiEb2reimStdHOba9jZbqgKpeTl4n8PAko9KHTBPGCwTSDqURz110thnopgxyCW4Javwb/qUO4fMdKCNL+uFPFGmfWXT3ADlq23w=",
+  "secrets": "F/v9nfwLMqfsss8/6JqoYpUcgJFagK+NLm1hSo/y/kbyqi9kE2EQ/Hxug7uPRH8Me+BxXOYw4YaSt/dXs1jnGYs4jYLbw6DlHiFLWLfumgMbcFequVTVpTULxA1tfZf74KOhgivSMTzMty7ryPgfu1oLkJiqEOuNJJe4qB+V1RLQ7+ZjvUCcgy6jv6OLgNPtjD8Bx+2ocE1oXHP/95wXhcBzbmBK0fKW2kIFGTvhukoGKAtoSRgYgZBB4dFuATnIe9yf+vsQA9b7FOJQmdYJsb29x00vQvAFauHdw+uRUCSb21+dWI1rpRXCsjSGUnmMkmIKm5g4gXNEOrU3RKQZWYaU77A+qmJ1T+L0IegkglIS7WQH+78xSRQZjMOfjFQJNgrIfOU9+roK9bFNIhzhA4kW5GUCW6alcw6LaeD4Gi2wpqrE2/cq73bCCZG+puWhBOrUpvz4L0MihOLM/HS/PY2v8f8cZEvIN6lhhNmhfSYxwDXiSYMxNCp8JiYrweQrDMRwcsDkOem4xJRUIC6oiieyJ7UV2A9ttOmGEkKjuJrlKdtoLmR067iujWQjm/PEyvY909Cnu59c+hyxykdowx8IAn7qe9t6qg/hZWVyxet8leqqyUkmmvbZ0NQYBGWHU/0MY3IAFoImDaMShPK1vPtUiDy26qeXAWFCJGF8S+Pjdo0PFO+GBDG0d1EvefOZqkyfL++UHQtAsSBOClpNRaIieKjQpCDy7j1YnnIwr2tZVH/ESHOvKtTfO5qsTqs4KpAyWS2NM0cukDSH53NsehRMvpjNnVGDHGWgLjOlNkF5pSi0BcAn0HJ10c/UzFNgTEFm7w1SSiLYXDxhmNzM+FUyX0PV2ngPri2Ss3Fd0XHCtGW6ok+5igN14WsTkI0rhXLRhlKMkGcBI4sa0DdW2TE3swVCZJkDhq55T1VslmpgzwOhJEOM+9Tm9JmX+yUfw599lw7Z0aJQgwvCP5yWnGJFD1SMbh9pFZRICL0SW3yixgXbs+LwHCWi7pd34Qj3r3+g6uxj4T/O56ucVL+kTw==",
   "settings": {
-    "use_deskpro_saas": {
-      "title": "Use Deskpro SaaS",
-      "description": "Use Deskpros API Keys",
+    "use_advanced_connect": {
+      "title": "Advanced Connect",
+      "description": "Follow the setup guide and use your credentials to connect the app to Deskpro",
       "type": "boolean",
-      "default": true,
-      "isRequired": true,
-      "isBackendOnly": false
+      "isRequired": false,
+      "isBackendOnly": false,
+      "default": false,
+      "order": 5
     },
     "api_key": {
       "title": "API Key",
@@ -25,7 +26,8 @@
       "type": "string",
       "isRequired": false,
       "isBackendOnly": true,
-      "condition": "settings.use_deskpro_sass != true"
+      "condition": "settings.use_advanced_connect != true",
+      "order": 10
     }
   },
   "proxy": {
