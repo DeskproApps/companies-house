@@ -57,7 +57,7 @@ export const Main = () => {
           q
         )}`,
         {
-          headers: context?.settings.use_advanced_connect !== true
+          headers: context?.settings.use_advanced_connect !== false
             ? {
               Authorization: "Basic __api_key.base64__",
             }
