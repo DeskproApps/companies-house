@@ -10,7 +10,7 @@
     "serve": "vite preview",
     "test": "deno test || echo 'No tests defined yet'",
     "test:coverage": "deno task test --coverage",
-    "bumpManifestVer": "deno ./bin/bumpManifestVer.ts"
+    "bumpManifestVer": "deno -A ./bin/bumpManifestVer.ts"
   },
   "dependencies": {
     "@deskpro/app-sdk": "^6.0.3",
