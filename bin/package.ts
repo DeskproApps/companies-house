@@ -10,7 +10,7 @@ const version = manifest.version.replaceAll(".", "_");
 const packagePath = `build/${name}-${version}.zip`;
 try {
   fs.mkdirSync(`${import.meta.dirname}/../build`, {recursive: true});
-} catch (e) {
+} catch {
   // do nothing as the folder already existing is fine.
 }
 child_process.execSync(`zip -r ${import.meta.dirname}/../${packagePath} .`, {
