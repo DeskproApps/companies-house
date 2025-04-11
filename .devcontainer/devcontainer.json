@@ -1,11 +1,8 @@
 {
   "name": "App Container",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
   "features": {
-    "ghcr.io/devcontainers/features/node:1": {
-      "version": "lts",
-      "pnpm": "latest"
-    }
+    "ghcr.io/devcontainers-community/features/deno": {}
   },
   "customizations": {
     "vscode": {
@@ -14,7 +11,7 @@
         "editor.tabSize": 2
       },
       "extensions": [
-        "dbaeumer.vscode-eslint"
+        "denoland.vscode-deno"
       ]
     }
   },
@@ -22,8 +19,5 @@
     "source=${localEnv:HOME}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached",
     "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
   ],
-  "postCreateCommand": "pnpm install",
-  "containerEnv": {
-    "npm_config_store_dir": "/home/node/.local/share/pnpm/store"
-  }
+  "postCreateCommand": "deno install"
 }

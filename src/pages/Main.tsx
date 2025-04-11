@@ -1,21 +1,21 @@
-import { Input, Stack, IconButton, AnyIcon } from "@deskpro/deskpro-ui";
+import { AnyIcon, IconButton, Input, Stack } from "@deskpro/deskpro-ui";
 import {
+  HorizontalDivider,
   proxyFetch,
   useDeskproAppClient,
-  HorizontalDivider,
   useDeskproAppTheme,
-  useInitialisedDeskproAppClient,
   useDeskproLatestAppContext,
+  useInitialisedDeskproAppClient,
 } from "@deskpro/app-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useErrorBoundary } from "react-error-boundary";
 import {
-  faSearch,
-  faTimes,
-  faSpinner,
   faExternalLink,
+  faSearch,
+  faSpinner,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import { ChangeEvent, useEffect, useRef, useState, Fragment } from "react";
+import { ChangeEvent, Fragment, useEffect, useRef, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { Company } from "../types";
 import { SideColumns } from "../components/SideColumns/SideColumns";
@@ -23,7 +23,10 @@ import { SideColumns } from "../components/SideColumns/SideColumns";
 export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext<unknown, {use_advanced_connect?: boolean}>();
+  const { context } = useDeskproLatestAppContext<
+    unknown,
+    { use_advanced_connect?: boolean }
+  >();
 
   const { showBoundary } = useErrorBoundary();
 
@@ -53,9 +56,11 @@ export const Main = () => {
       const fetch = await proxyFetch(client);
 
       const res = await fetch(
-        `https://api.company-information.service.gov.uk/search/companies?q=${encodeURIComponent(
-          q
-        )}`,
+        `https://api.company-information.service.gov.uk/search/companies?q=${
+          encodeURIComponent(
+            q,
+          )
+        }`,
         {
           headers: context?.settings.use_advanced_connect !== false
             ? {
@@ -65,7 +70,7 @@ export const Main = () => {
               "X-Proxy-Global-Proxy-Service": "true",
               Authorization: "__AUTH__",
             },
-        }
+        },
       );
 
       if (!res.ok) {
@@ -94,20 +99,30 @@ export const Main = () => {
   }
 
   return (
-    <Stack gap={10} vertical style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}>
+    <Stack
+      gap={10}
+      vertical
+      style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+    >
       <Input
         ref={searchInputRef}
         value={searchQuery}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          setSearchQuery(e.target.value)
+          setSearchQuery(e.target.value)}
+        leftIcon={searchLoading
+          ? (
+            <FontAwesomeIcon
+              icon={faSpinner as unknown as {
+                prefix: "fas";
+                iconName: "mailchimp";
+              }}
+              spin
+            />
+          )
+          : faSearch as AnyIcon}
+        rightIcon={
+          <IconButton icon={faTimes as never} onClick={clear} minimal />
         }
-        leftIcon={
-          searchLoading ? <FontAwesomeIcon icon={faSpinner as unknown as {
-            prefix: "fas";
-            iconName: "mailchimp";
-          }} spin /> : faSearch as AnyIcon
-        }
-        rightIcon={<IconButton icon={faTimes as never} onClick={clear} minimal />}
         placeholder="Search companies house&hellip;"
       />
       {companies.map((company, idx) => (
@@ -150,18 +165,18 @@ export const Main = () => {
                 },
                 {
                   key: "Company Type",
-                  value:
-                    company.company_type.charAt(0).toUpperCase() +
+                  value: company.company_type.charAt(0).toUpperCase() +
                     company.company_type.slice(1).replaceAll("-", " "),
                 },
               ]}
-            ></SideColumns>
+            >
+            </SideColumns>
             <SideColumns
               fields={[
                 {
                   key: "Date of Creation",
                   value: new Date(company.date_of_creation).toLocaleDateString(
-                    "en-GB"
+                    "en-GB",
                   ),
                 },
                 {
@@ -169,10 +184,11 @@ export const Main = () => {
                   value: !company.company_status
                     ? "-"
                     : company.company_status?.charAt(0).toUpperCase() +
-                    company.company_status?.slice(1),
+                      company.company_status?.slice(1),
                 },
               ]}
-            ></SideColumns>
+            >
+            </SideColumns>
           </Stack>
         </Fragment>
       ))}

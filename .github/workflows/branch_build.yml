@@ -42,14 +42,13 @@ jobs:
             set -e
 
             # Lint
-            pnpm run lint
-            pnpm tsc --noemit
+            deno lint
 
             # Test
-            pnpm test:coverage
+            deno task test:coverage
 
             # Build
-            pnpm run build
+            deno task build
 
             # Tag
             if [ "$(git log -1 --pretty=format:%ae)" = "noreply@github.com" ]; then
@@ -65,14 +64,14 @@ jobs:
 
             echo "Current Version is $VERSION and the milestone is $MILESTONE"
             if [[ "$MILESTONE" == "major-version" ]]; then
-              pnpm run bumpManifestVer major $VERSION
+              deno task bumpManifestVer major $VERSION
             elif [[ "$MILESTONE" == "minor-version" ]]; then
-              pnpm run bumpManifestVer minor $VERSION
+              deno task bumpManifestVer minor $VERSION
             else
-              pnpm run bumpManifestVer patch $VERSION
+              deno task bumpManifestVer patch $VERSION
             fi
 
-            pnpm prettier --write manifest.json
+            deno fmt manifest.json -- --fix
 
       - name: Update the Manifest in git
         run: |

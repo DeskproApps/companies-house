@@ -1,4 +1,5 @@
-const fs = require("fs");
+import process from "node:process";
+import fs from "node:fs";
 
 const bumpSemanticVersion = (versionString, bumpType = "patch") => {
   let [major, minor, patch] = versionString.split(".");
@@ -30,7 +31,7 @@ const packageJson = JSON.parse(fs.readFileSync("./manifest.json", "utf8"));
 //1
 packageJson.version = bumpSemanticVersion(
   process.argv[3] ? process.argv[3] : packageJson.version,
-  process.argv[2]
+  process.argv[2],
 );
 
 fs.writeFileSync("./manifest.json", JSON.stringify(packageJson));

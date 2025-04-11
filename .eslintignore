@@ -1,8 +1,0 @@
-build/
-dist/
-node_modules/
-.snapshots/
-*.min.js
-lib
-storybook-static
-.storybook

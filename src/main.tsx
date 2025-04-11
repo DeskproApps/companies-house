@@ -7,7 +7,9 @@ import { Scrollbar } from "@deskpro/deskpro-ui";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Scrollbar style={{height: "100%", width: "100%"}}><App /></Scrollbar>
+    <Scrollbar style={{ height: "100%", width: "100%" }}>
+      <App />
+    </Scrollbar>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
