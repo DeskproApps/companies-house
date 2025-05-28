@@ -1,5 +1,4 @@
 import { DeskproAppProvider } from "@deskpro/app-sdk";
-import { ErrorBoundary } from "react-error-boundary";
 import { HashRouter, Route, Routes } from "react-router-dom";
 
 import { Main } from "./pages/Main";
@@ -11,14 +10,13 @@ import "simplebar/dist/simplebar.min.css";
 import "@deskpro/deskpro-ui/dist/deskpro-ui.css";
 import "@deskpro/deskpro-ui/dist/deskpro-custom-icons.css";
 import { ErrorFallback } from "./components/ErrorFallback/ErrorFallback";
+import { ErrorBoundary } from "@sentry/react";
 
 function App() {
   return (
     <HashRouter>
       <DeskproAppProvider>
-        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment*/}
-        {/*@ts-ignore*/}
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
+        <ErrorBoundary fallback={ErrorFallback}>
           <Routes>
             <Route path="/" index element={<Main />} />
           </Routes>

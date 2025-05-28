@@ -1,12 +1,10 @@
 import { Stack, H1, H2, Button, AnyIcon } from "@deskpro/deskpro-ui";
 import { faRefresh } from "@fortawesome/free-solid-svg-icons";
+import { FallbackRender } from "@sentry/react";
 
-export const ErrorFallback = ({
+export const ErrorFallback: FallbackRender = ({
   error,
-  resetErrorBoundary,
-}: {
-  error: string;
-  resetErrorBoundary: () => void;
+  resetError,
 }) => {
   return (
     <Stack vertical gap={10} role="alert">
@@ -14,7 +12,7 @@ export const ErrorFallback = ({
       <H2>{error}</H2>
       <Button
         text="Reload"
-        onClick={resetErrorBoundary}
+        onClick={resetError}
         icon={faRefresh as AnyIcon}
         intent="secondary"
       />
