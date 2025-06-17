@@ -6,10 +6,17 @@ export const ErrorFallback: FallbackRender = ({
   error,
   resetError,
 }) => {
+
+  let errorMessage = "An unknown error occurred."
+
+  if (error instanceof Error){
+    errorMessage = error.message
+  }
+
   return (
     <Stack vertical gap={10} role="alert">
       <H1>Something went wrong:</H1>
-      <H2>{error}</H2>
+      <H2>{errorMessage}</H2>
       <Button
         text="Reload"
         onClick={resetError}
