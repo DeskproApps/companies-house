@@ -8,7 +8,6 @@ import {
   useDeskproLatestAppContext,
 } from "@deskpro/app-sdk";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useErrorBoundary } from "react-error-boundary";
 import {
   faSearch,
   faTimes,
@@ -23,9 +22,8 @@ import { SideColumns } from "../components/SideColumns/SideColumns";
 export const Main = () => {
   const { theme } = useDeskproAppTheme();
   const { client } = useDeskproAppClient();
-  const { context } = useDeskproLatestAppContext<unknown, {use_advanced_connect?: boolean}>();
+  const { context } = useDeskproLatestAppContext<unknown, { use_advanced_connect?: boolean }>();
 
-  const { showBoundary } = useErrorBoundary();
 
   const searchInputRef = useRef(null);
 
@@ -69,9 +67,19 @@ export const Main = () => {
       );
 
       if (!res.ok) {
-        showBoundary((await res.json()).error);
+        let message = 'An unknown error occurred'
 
-        return;
+        try {
+          const contentType = res.headers.get('Content-Type');
+          if (contentType && contentType.includes('application/json')) {
+            const errorData = await res.json()
+            message = errorData.message ?? "An unknown error occurred"
+          }
+        } catch (err) {
+          message = 'Failed to parse error response'
+        }
+
+        throw new Error(message);
       }
 
       setCompanies((await res.json())?.items ?? []);
