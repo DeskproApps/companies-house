@@ -3,8 +3,9 @@ import { Stack } from "@deskpro/deskpro-ui";
 
 import { ReactElement } from "react";
 import { Property } from "../Property/Property";
+import { DeskproAppTheme } from "@deskpro/app-sdk";
 
-const Divider = styled.div`
+const Divider = styled.div<DeskproAppTheme>`
   display: inline-block;
   width: 1px;
   background-color: ${({ theme }) => theme.colors.grey20};
