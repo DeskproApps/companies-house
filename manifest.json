@@ -35,7 +35,12 @@
       {
         "url": "https://api.company-information.service.gov.uk/.*",
         "methods": ["GET"],
-        "timeout": 30
+        "timeout": 30,
+        "settingsInjection": {
+          "api_key": {
+            "header": ["Authorization"]
+          }
+        }
       }
     ]
   }
